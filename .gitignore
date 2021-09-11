@@ -1,5 +1,5 @@
 data
 execs/*
 slurm/out/*
-report
+report*
 *.swp

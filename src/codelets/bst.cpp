@@ -67,14 +67,14 @@ class BST : public poplar::Vertex {
 		}
 		
 		bool compute(){
-      *res = binarySearch(target, *q);
+      *res = (bool)binarySearch(target, *q);
 			return true;
 		}
 };
 
 class Reduce : public poplar::Vertex {
   public:
-    poplar::Input<poplar::Vector<vid_t>> results;
+    poplar::Input<poplar::Vector<bool>> results;
     poplar::Input<vid_t> src_neigh_size;
     poplar::Input<vid_t> dst_neigh_size;
     poplar::Output<jac_t> jac;
@@ -82,8 +82,9 @@ class Reduce : public poplar::Vertex {
     bool compute(){
       vid_t cn = 0; 
       for(const auto &r : results){
-        cn += (vid_t)r;
+        cn += (unsigned int)r;
       }
 			*jac = (float)cn / (src_neigh_size + dst_neigh_size - cn); 
+      return true;
     }
 };

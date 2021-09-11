@@ -25,7 +25,6 @@ hostname
 export IPUOF_CONFIG_PATH=/cm/shared/apps/graphcore/vipu/etc/ipuof.conf.d/p64_cl_a01_a16.conf
 #export IPUOF_CONFIG_PATH=/cm/shared/apps/graphcore/vipu/etc/ipuof.conf.d/part_64_ipuof.conf             # 4 IPU Partition
 #export IPUOF_CONFIG_PATH=/cm/shared/apps/graphcore/vipu/etc/ipuof.conf.d/p4_cl_a17_a18_ipuof.conf   # For GC-200 M2000 IPUPOD16
-echo "Checking out occupation..."
-#srun gc-info --list-devices
 srun gc-info --list-devices
-#srun gc-monitor
+#srun gc-info --list-devices
+srun gc-monitor
